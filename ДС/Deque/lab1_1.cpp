@@ -1,5 +1,5 @@
 #include <iostream>
-#include "my_deque.h"
+#include "my_deque.cpp"
 
 void print() {
     std::cout << "1. Add an element to the beginning" << std::endl;
@@ -33,7 +33,7 @@ int main() {
 
         std::cout << "Select an action: ";
         std::cin >> choice;
-        std::cout << "------------------------------------------------ ---------------" << std::endl;
+        std::cout << "--------------------------------------------------------------" << std::endl;
 
         switch (choice) {
         case 1:
@@ -91,6 +91,7 @@ int main() {
             break;
         case 13:
             std::cout << "Program completed." << std::endl;
+            myDeque.clear();
             break;
         default:
             std::cout << "Invalid choice. Try again." << std::endl;

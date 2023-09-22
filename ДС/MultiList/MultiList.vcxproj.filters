@@ -18,6 +18,9 @@
     <ClCompile Include="lab1_2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="multilist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="multilist.h">

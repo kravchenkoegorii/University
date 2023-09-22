@@ -1,5 +1,5 @@
 #include <iostream>
-#include "multilist.h"
+#include "multilist.cpp"
 
 void print() {
     std::cout << "1. Add" << std::endl;

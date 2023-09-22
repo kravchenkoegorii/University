@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab1_1.cpp" />
+    <ClCompile Include="my_deque.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_deque.h" />
