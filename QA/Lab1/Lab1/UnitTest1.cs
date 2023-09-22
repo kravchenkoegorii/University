@@ -31,7 +31,7 @@ namespace Lab1
             driver.FindElement(By.Id("postform-name")).SendKeys("ada2");
 
             driver.FindElement(By.CssSelector(".btn.-big")).Click();
-            Thread.Sleep(5000);
+
             Assert.Pass();
         }
 
@@ -59,7 +59,6 @@ namespace Lab1
             wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("topcartlink")));
             driver.FindElement(By.Id("topcartlink")).Click();
 
-            Thread.Sleep(5000);
             Assert.Pass();
         }
 
