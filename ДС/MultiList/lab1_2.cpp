@@ -17,7 +17,7 @@ int main() {
     int choice;
     int value;
     int search_value;
-    int neighbour;
+    string neighbour;
 
     do {
         print();
@@ -37,7 +37,7 @@ int main() {
             std::cin >> value;
             std::cout << "Enter the value to connect with: ";
             std::cin >> search_value;
-            std::cout << "Enter how connect: 0 - child, 1 - neighbour: ";
+            std::cout << "Enter how connect: c - child, n - neighbour: ";
             std::cin >> neighbour;
             myList.add(value, search_value, neighbour);
             break;

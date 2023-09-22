@@ -19,7 +19,7 @@ public:
 	bool is_empty();
 	int get_size();
 	int get_level_size(int _level);
-	void add(T _value, T _search_value, int _neighbour);
+	void add(T _value, T _search_value, string _isNeighbour);
 	void clear();
 	bool clear_level(int _level);
 	bool clear_branch_by_value(T _value);
@@ -67,7 +67,7 @@ int Multilist<T>::get_level_size(int _level) {
 }
 
 template<typename T>
-void Multilist<T>::add(T _value, T _search_value, int _neighbour) {
+void Multilist<T>::add(T _value, T _search_value, string _isNeighbour) {
 	if (root == nullptr) {
 		root = new Node<T>(_value);
 		size++;
@@ -83,7 +83,7 @@ void Multilist<T>::add(T _value, T _search_value, int _neighbour) {
 		return;
 	}
 		
-	if (_neighbour == 1) {
+	if (_isNeighbour == "n") {
 		Node<T>* new_node = new Node<T>(_value);
 		new_node->neighbour = node->neighbour;
 		node->neighbour = new_node;
@@ -108,35 +108,35 @@ void Multilist<T>::add(T _value, T _search_value, int _neighbour) {
 	try {
 		sizes.at(result.second)++;
 	}
-	catch (exception const& exc) {
+	catch (exception ex) {
 		sizes.push_back(1);
 	}
 }
 
-template<typename T>
-pair<Node<T>*, int> Multilist<T>::find_node(T& _value, Node<T>*& _node, int _level) {
-	if (_node == nullptr) {
+	template<typename T>
+	pair<Node<T>*, int> Multilist<T>::find_node(T& _value, Node<T>*& _node, int _level) {
+		if (_node == nullptr) {
+			return make_pair(nullptr, -1);
+		}
+
+		if (_node->value == _value) {
+			return make_pair(_node, _level);
+		}
+		
+		auto result = find_node(_value, _node->child, _level + 1);
+
+		if (result.first != nullptr) {
+			return result;
+		}
+
+		result = find_node(_value, _node->neighbour, _level);
+
+		if (result.first != nullptr) {
+			return result;
+		}
+
 		return make_pair(nullptr, -1);
 	}
-
-	if (_node->value == _value) {
-		return make_pair(_node, _level);
-	}
-		
-	auto result = find_node(_value, _node->child, _level + 1);
-
-	if (result.first != nullptr) {
-		return result;
-	}
-
-	result = find_node(_value, _node->neighbour, _level);
-
-	if (result.first != nullptr) {
-		return result;
-	}
-
-	return make_pair(nullptr, -1);
-}
 
 template<typename T>
 Node<T>* Multilist<T>::find_clear_point(int& _level, Node<T>*& _node, int _current_level) {
