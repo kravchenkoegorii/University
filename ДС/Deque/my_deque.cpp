@@ -95,16 +95,9 @@ void MyDeque<T>::swapFrontAndRear() {
         return;
     }
 
-    Node<T>* firstNode = front;
-    Node<T>* lastNode = rear;
-
-    lastNode->next = firstNode->next;
-    firstNode->next = nullptr;
-    rear = firstNode;
-    rear->next = nullptr;
-
-    front = lastNode;
-    front->next = nullptr;
+    T tempData = front->data;
+    front->data = rear->data;
+    rear->data = tempData;
 }
 
 template <typename T>

@@ -210,7 +210,6 @@ bool Multilist<T>::clear_level(int level) {
 	}
 
 	sizes.erase(sizes.begin() + level - 1, sizes.end());
-	size = accumulate(sizes.begin(), sizes.end(), 0);
 
 	return true;
 }
